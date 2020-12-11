@@ -1,0 +1,334 @@
+<!--
+INFO3130 Final Assignment
+Address / Contact Book 
+
+Created By: Michael Pantaleon
+Email: mpantaleon5818@conestogac.on.ca
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>Kinekt+</title>
+
+        <!--Application Icon-->
+        <link rel="shortcut icon" href="img/logo.png">
+        
+        <!--Required library files-->
+
+        <!--jQuery-->
+        <script src="js/lib/jquery-2.1.4.js"></script>
+        <!--jQuery mobile-->
+        <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+        <!--jQuery mobile css-->
+        <link rel="stylesheet" type="text/css" href="css/lib/jquery.mobile-1.4.5.css">
+        <!--jQuery validation library-->
+        <script src="js/lib/jquery.validate.js"></script>
+
+        <!--CSS Stylesheet-->
+        <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+
+        <!--JS files-->
+        <script src="js/database.js"></script>
+        <script src="js/feedbackDAL.js"></script>
+        <script src="js/util.js"></script>
+        <script src="js/global.js"></script>
+        <script src="js/facade.js"></script>
+
+
+    </head>
+    <body>
+
+        <!--Page 1: Home page-->
+        <div data-role="page" id="HomePage" data-theme="b">
+            <header data-role="header" data-position="fixed">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <!--Navigation bar tab selection must persist and change color on current selection-->
+                        <li><a href="#HomePage" data-icon="plus" data-theme="b" class="ui-btn-active ui-state-persist">Home</a>
+                        </li>
+                        <!--<li><a href="#addContactPage" data-icon="plus" data-theme="b">Add</a>-->
+                        </li>
+                        <li><a href="#viewContactListPage" data-icon="user" data-theme="b">Contacts</a>
+                        </li>
+                        <li><a href="#aboutPage" data-icon="info" data-theme="b">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+
+            <!--Page 1: Content-->
+            <section data-role="content">
+                <h1>Kinekt <b style="color:#ED1F79;">+</b></h1><hr><br>
+                <div align="center" style="padding-top:30px; padding-bottom: 30px;">
+                        <img src="img/logo.png" alt="Kinekt+">
+                </div>
+                <hr>
+                <p>An intuitive yet powerful contact manager that helps you organize, catalog and 
+                    efficiently manage your lists of personal and business contacts in one place.
+                </p>
+            </section>
+           
+            <footer data-role="footer" data-position="fixed">
+
+            </footer>
+
+        </div>
+
+        <!--Page 2: Add Contact Page-->
+        <div data-role="page" id="addContactPage" data-theme="b">
+            <header data-role="header" data-position="fixed">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#HomePage" data-icon="plus" data-theme="b">Home</a></li>
+                        <!--<li><a href="#addContactPage" data-icon="plus" data-theme="b" class="ui-btn-active ui-state-persist">Add</a></li>-->
+                        <li><a href="#viewContactListPage" data-icon="user" data-theme="b" class="ui-btn-active ui-state-persist">Contacts</a></li>
+                        <li><a href="#aboutPage" data-icon="info" data-theme="b">About</a></li>
+                    </ul>
+                </div>
+            </header>
+
+            <!--Page 2: Content-->
+            <section data-role="content">
+                <div id="mainDiv">
+                    <h1>Add Contact <b style="color:#ED1F79;">+</b></h1><hr><br>
+                    <form id="AddForm" name="AddForm" data-ajax="false">
+
+                        <!-- Dropbox for Relationship Type -->
+                        <label for="Type"><b>Relationship:</b></label>
+                        <select name="Type" id="Type">
+                            <option value="1">Friend</option>
+                            <option value="2">Co-worker</option>
+                            <option value="3">Family</option>
+                        </select>
+
+                        <!--Text Field for Contact Name Input-->
+                        <label for="addName"><b>Name:</b></label>
+                        <input type="text" id="addName" name="addName" class="required" placeholder="">
+
+                        <!--Text Field for Contact Phone Input-->                       
+                        <label for="addPhone"><b>Phone:</b></label>
+                        <input type="text" id="addPhone" name="addPhone" placeholder="">
+                        
+                        <!--Text Field for Reviewer Email Input-->
+                        <label for="addEmail"><b>Email:</b></label>
+                        <input type="text" id="addEmail" name="addEmail">
+
+                        <!--Checkbox for View More Options Input-->
+                        <label><input type="checkbox" name="addViewMore" id="addViewMore">View More</label>
+
+                        <div id="addVmDiv">
+                            <!--Text Field for Address Input-->                      
+                            <label for="addAddress"><b>Address:</b></label>
+                            <input type="text" class="input" id="addAddress" name="addAddress">
+
+                            <!--Text Field for City Input-->    
+                            <label for="addCity"><b>City:</b></label>
+                            <input type="text" class="input" id="addCity" name="addCity">
+
+                            <!--Text Field for Province / State Input-->    
+                            <label for="addProvince"><b>Province / State:</b></label>
+                            <input type="text" class="input" id="addProvince" name="addProvince" style="text-transform:uppercase">
+
+                            <!--Text Area for Additional Notes Input-->
+                            <label for="addNotes"><b>Notes:</b></label>
+                            <textarea type="text" id="addNotes" name="addNotes"></textarea>  
+                        </div>
+                        
+                        <!--Cancel and Save Buttons-->        
+                        <div data-role="controlgroup" data-type="horizontal" align="right">          
+                        <button type="button" class="ui-btn ui-btn-inline" name="btnCancel" id="btnCancel" data-theme="a">Cancel</button> 
+                        <button type="button" class="ui-btn ui-btn-inline" name="btnSave" id="btnSave" data-theme="b">Add Contact</button>
+                        </div>                       
+                    </form>
+                </div>
+
+            </section>
+
+            <footer data-role="footer" data-position="fixed">
+
+            </footer>
+
+        </div>
+
+        <!--Page 3: View Contact List Page-->
+        <div data-role="page" id="viewContactListPage" data-theme="b">
+            <header data-role="header" data-position="fixed">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#HomePage" data-icon="plus" data-theme="b">Home</a>
+                        </li>
+                        <!--<li><a href="#addContactPage" data-icon="plus" data-theme="b">Add</a>-->
+                        </li>
+                        <li><a href="#viewContactListPage" data-icon="user" data-theme="b" class="ui-btn-active
+                         ui-state-persist">Contacts</a>
+                        </li>
+                        <li><a href="#aboutPage" data-icon="info" data-theme="b">About</a>
+                        </li>
+                    </ul>
+                </div>     
+            </header>
+
+            <!--Page 3: Content-->
+            <section data-role="content">
+                <h1>Contacts <b style="color:#ED1F79;">+</b></h1><hr><br>
+                <ul id="FeedbackList" data-role="listview" data-autodividers="true" data-filter="true" data-inset="true" class="ui-listview-inset">
+                
+
+                </ul>
+
+            </section>
+
+            <footer data-role="footer" data-position="fixed"> 
+                <div class="fab">
+                    <a href="#addContactPage" class="not-active" onClick="resetForm()"><img src="img/plus.png"></a> 
+                </div>
+            </footer>
+
+        </div>
+
+        <!--Page 4: Edit Contact Page-->
+        <div data-role="page" id="editContactPage" data-theme="b">
+            <header data-role="header" data-position="fixed">          
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                            <li><a href="#HomePage" data-icon="plus" data-theme="b">Home</a>
+                            </li>    
+                            <!--<li><a href="#addContactPage" data-icon="plus" data-theme="b">Add</a>
+                            </li>-->
+                            <li><a href="#viewContactListPage" data-icon="user" data-theme="b" class="ui-btn-active
+                             ui-state-persist">Contacts</a>
+                            </li>
+                            <li><a href="#aboutPage" data-icon="info" data-theme="b">About</a>
+                            </li>
+                        </ul>
+                </div>               
+            </header>
+
+            <!--Page 4: Content-->
+            <section data-role="content">
+                <div id="mainModifyDiv">
+                    <h1>Edit Contact <b style="color:#ED1F79;">+</b></h1>  <hr><br>
+                    <form id="EditForm" name="EditForm" data-ajax="false">
+
+                        <!-- Drop list for Relationship Type -->
+                        <label for="txtTypeEdit"><b>Relationship:</b></label>
+                        <select name="TypeEdit" id="TypeEdit">
+                            <option value="1">Friend</option>
+                            <option value="2">Co-worker</option>
+                            <option value="3">Family</option>
+                        </select>
+
+                        <!--Text Field for Edit Contact Name Input-->
+                        <label for="editName"><b>Name:</b></label>
+                        <input type="text" id="editName" name="editName" class="required" >
+
+                        <!--Text Field for Edit Contact Name Input-->
+                        <label for="editPhone"><b>Phone:</b></label>
+                        <input type="text" id="editPhone" name="editPhone" placeholder="">
+
+                        <!--Text Field for Edit Email Input-->
+                        <label for="editEmail"><b>Email:</b></label>
+                        <input type="text" id="editEmail" name="editEmail">
+
+                        <label><input type="checkbox" name="editViewMore" id="editViewMore">View More</label>
+
+                        <div id="editVmDiv">
+                            <!--Text Field for Edit Address Input-->                            
+                            <label for="editAddress"><b>Address:</b></label>
+                            <input type="text" class="input2" id="editAddress" name="editAddress" >
+
+                            <!--Text Field for Edit City Input-->
+                            <label for="editCity"><b>City:</b></label>
+                            <input type="text" class="input2" id="editCity" name="editCity">
+
+                            <!--Text Field for Edit Province / State Input-->
+                            <label for="editProvince"><b>Province / State:</b></label>
+                            <input type="text" class="input2" id="editProvince" name="editProvince" style="text-transform:uppercase">
+
+                            <!--Text Area for Edit Notes Input-->
+                            <label for="editNotes"><b>Notes</b></label>
+                            <textarea type="text" id="editNotes" name="editNotes"></textarea>                              
+                        </div>
+
+                        
+                        <!--Cancel and Save Buttons-->        
+                        <div data-role="controlgroup" data-type="horizontal" align="left">          
+                        <button type="button" class="ui-btn ui-btn-inline" name="btnCancel2" id="btnCancel2" data-theme="a">Cancel</button> 
+                        <button type="button" class="ui-btn ui-btn-inline" name="btnDelete" id="btnDelete" data-theme="a">Delete</button>
+                        <button type="button" class="ui-btn ui-btn-inline" name="btnUpdate" id="btnUpdate" data-theme="a">Save</button>
+                        </div>
+                    </form>               
+                </div>
+
+            </section>
+
+            <footer data-role="footer" data-position="fixed">
+
+                <div class="fab">
+                        <a href="" id="callNumber" rel="external" class="not-active"><center><img src="img/phone.png"></center></a> 
+                </div> 
+                <div class="fab2">
+                    <a href="" id="textNumber" rel="external" class="not-active"><center><img src="img/sms.png"></center></a> 
+                </div> 
+                <div class="fab3">
+                    <a href="" id="emailNumber" rel="external" class="not-active"><center><img src="img/email.png"></center></a> 
+                </div> 
+            </footer>
+        </div>
+
+        <!--Page 5: About Developer Page-->
+        <div data-role="page" id="aboutPage" data-theme="b">
+            <header data-role="header" data-position="fixed">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#HomePage" data-icon="plus" data-theme="b">Home</a>
+                        </li>
+                        <!--<li><a href="#addContactPage" data-icon="plus" data-theme="b">Add</a>-->
+                        </li>
+                        <li><a href="#viewContactListPage" data-icon="user" data-theme="b">Contacts</a>
+                        </li>
+                        <li><a href="#aboutPage" data-icon="info" data-theme="b" class="ui-btn-active
+                         ui-state-persist">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+
+            <!--Page 5: Content-->
+            <section data-role="content">
+                <h1>About <b style="color:#ED1F79;">+</b></h1><hr>
+             
+                <h1>Developer Information</h1>
+                <table style="width:30%">
+                        <tr>
+                          <th><center><img src="img/avatar.png" width="85"></center></th>
+                          <th>
+                              <p style="font-size: 14px">IT Innovation & Design<br>
+                              Michael Pantaleon<br>
+                              mpantaleon5818@conestogac.on.ca<br></p>
+                          </th>
+                        </tr>
+                </table>
+                <hr>
+                <h1>Video: Current Favourite Song</h1>
+                <center> 
+                    <video controls="controls" muted autoplay class="img-fluid-1">
+                    <source src="video.mp4"  type="video/mp4" w />
+                    <track kind="subtitles" src="subtitles_en.vtt" srclang="en" label="English" default="enable"/>
+                  </video>
+        
+
+            </section>
+
+            <footer data-role="footer" data-position="fixed">
+
+            </footer>
+
+        </div>
+
+    </body>
+</html>
+

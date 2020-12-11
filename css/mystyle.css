@@ -1,0 +1,118 @@
+label.error{
+    color:#ED1F79 ;
+    font-weight: bold;
+}
+
+input.error,
+select.error,
+textarea.error {
+    border: 1px rgb(255, 200, 224)  solid;
+}
+
+.fab {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    box-shadow: 0 6px 10px 0 rgb(36, 36, 36);
+    
+    font-size: 40px;
+    line-height: 50px;
+    color: white;
+    text-align: center;
+    
+    position: fixed;
+    right: 10px;
+    bottom: 15px;
+    
+   transition: all 0.1s ease-in-out;
+ }
+ 
+ .fab:hover {
+    box-shadow: 0 1px 10px 0 #ED1F79;
+    transform: scale(1.05);
+ }
+
+ .not-active {
+    text-decoration: none;
+    color: black;
+  }
+
+/* Second Button */ 
+.fab2 {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 50%;
+  box-shadow: 0 6px 10px 0 rgb(36, 36, 36);
+  
+  font-size: 40px;
+  line-height: 50px;
+  color: white;
+  text-align: center;
+  
+  position: fixed;
+  right: 65px;
+  bottom: 15px;
+  
+ transition: all 0.1s ease-in-out;
+}
+
+.fab2:hover {
+  box-shadow: 0 1px 10px 0 #ED1F79;
+  transform: scale(1.05);
+}
+
+.not-active {
+  text-decoration: none;
+  color: black;
+}
+
+/* Third Button */ 
+.fab3 {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 50%;
+  box-shadow: 0 6px 10px 0 rgb(36, 36, 36);
+  
+  font-size: 40px;
+  line-height: 50px;
+  color: white;
+  text-align: center;
+  
+  position: fixed;
+  right: 120px;
+  bottom: 15px;
+  
+ transition: all 0.1s ease-in-out;
+}
+
+.fab3:hover {
+  box-shadow: 0 1px 10px 0 #ED1F79;
+  transform: scale(1.05);
+}
+
+.not-active {
+  text-decoration: none;
+  color: black;
+}
+
+div b{
+      color: #ED1F79;
+}
+
+table, th, td {
+  border-collapse: collapse;
+  text-decoration: none;
+}
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+.img-fluid-1 {
+  max-width: 100%;
+  margin: auto;
+}
+
